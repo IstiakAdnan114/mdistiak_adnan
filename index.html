@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Istiak Adnan - Enhanced Visual CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-preset-links@2.12.0/tsparticles.preset.links.bundle.min.js"
+        integrity="sha256-Kq9IblhtnUOu75DRD4BIgJ4p4/7JUMMy6eXI/YcTo0c=" crossorigin="anonymous" async defer></script>
+
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-glass: rgba(255, 255, 255, 0.1);
+            --border-glass: rgba(255, 255, 255, 0.2);
+            --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        [data-theme="dark"] {
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-glass: rgba(17, 24, 39, 0.3);
+            --border-glass: rgba(75, 85, 99, 0.3);
+            --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Glassmorphism Effects */
+        .glass {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .glass-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px 0 rgba(99, 102, 241, 0.3);
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 3D Card Hover Effects */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .card-3d:hover {
+            transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Pulse Animation */
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+            }
+        }
+
+        /* Typewriter Effect */
+        .typewriter {
+            border-right: 2px solid var(--accent-color);
+            animation: typewriter 4s steps(40) 1s 1 normal both, blinkTextCursor 1s infinite;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blinkTextCursor {
+            from {
+                border-right-color: var(--accent-color);
+            }
+
+            to {
+                border-right-color: transparent;
+            }
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Interactive Timeline */
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(50px);
+        }
+
+        /* Enhanced Navigation */
+        .nav-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .nav-blur {
+            background: rgba(17, 24, 39, 0.8);
+            border-bottom: 1px solid rgba(75, 85, 99, 0.2);
+        }
+
+        /* Interactive Skills */
+        .skill-bar {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            transform: translateX(-100%);
+            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .skill-progress.animate {
+            transform: translateX(0);
+        }
+
+        /* Photo Gallery Hover Effects */
+        .photo-hover {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-hover img {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .photo-hover:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .photo-hover:hover::before {
+            opacity: 0.3;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background-color: var(--bg-secondary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-glass);
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle::before {
+            transform: translateX(28px);
+        }
+
+        /* Particle System */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* Enhanced Buttons */
+        .btn-gradient {
+            background: var(--gradient-primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Enhanced Accordion */
+        .accordion-enhanced {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Responsive Design Enhancements */
+        @media (max-width: 768px) {
+            .glass-card:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+
+            .card-3d:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--bg-secondary);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Smooth Transitions */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Enhanced Mobile Menu */
+        .mobile-menu-enhanced {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-secondary);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Particle System Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen"
+        class="fixed inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex items-center justify-center z-50">
+        <div class="text-center">
+            <div class="loader mx-auto mb-4"></div>
+            <h2 class="text-2xl font-bold text-white">Loading Experience...</h2>
+        </div>
+    </div>
+
+    <!-- Enhanced Header -->
+    <header class="fixed top-0 z-40 w-full nav-blur transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-4 sm:px-6 lg:px-8">
+            <!-- Brand Name with Animation -->
+            <a href="#home" class="text-xl sm:text-2xl font-bold whitespace-nowrap">
+                <span id="intro-text1"
+                    class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"></span>
+            </a>
+
+            <!-- Theme Toggle -->
+            <div class="hidden md:flex items-center mr-4">
+                <div class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">
+                    <i class="fas fa-sun absolute left-1 top-1 text-yellow-400 text-xs"></i>
+                    <i class="fas fa-moon absolute right-1 top-1 text-blue-400 text-xs"></i>
+                </div>
+            </div>
+
+            <!-- Hamburger Menu (Mobile Only) -->
+            <button id="hamburger-btn" class="md:hidden text-current focus:outline-none text-3xl z-50 relative">
+                <span class="hamburger-line block w-6 h-0.5 bg-current mb-1 transition-all duration-300"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-current mb-1 transition-all duration-300"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-current transition-all duration-300"></span>
+            </button>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden md:flex md:justify-center">
+                <ul class="flex items-center space-x-8">
+                    <li><a href="#home" class="nav-link hover:text-indigo-600 transition-colors font-medium">Home</a>
+                    </li>
+                    <li><a href="#about" class="nav-link hover:text-indigo-600 transition-colors font-medium">About</a>
+                    </li>
+                    <li><a href="#experience"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Experience</a></li>
+                    <li><a href="#skills"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Skills</a></li>
+                    <li><a href="#projects"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Projects</a></li>
+                    <li><a href="#research"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Research</a></li>
+                    <li><a href="#photos"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Photos</a></li>
+                    <li><a href="#achievements"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Achievements</a></li>
+                    <li><a href="#contact"
+                            class="nav-link hover:text-indigo-600 transition-colors font-medium">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu"
+                class="mobile-menu-enhanced hidden fixed top-0 left-0 w-full h-screen flex-col items-center justify-center space-y-8 opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+                <a href="#home"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Home</a>
+                <a href="#about"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">About</a>
+                <a href="#experience"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Experience</a>
+                <a href="#skills"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Skills</a>
+                <a href="#projects"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Projects</a>
+                <a href="#research"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Research</a>
+                <a href="#photos"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Photos</a>
+                <a href="#achievements"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Achievements</a>
+                <a href="#contact"
+                    class="mobile-link text-2xl font-semibold hover:text-indigo-400 transition-colors">Contact</a>
+
+                <!-- Mobile Theme Toggle -->
+                <div class="theme-toggle mt-8" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fas fa-sun absolute left-1 top-1 text-yellow-400 text-xs"></i>
+                    <i class="fas fa-moon absolute right-1 top-1 text-blue-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Enhanced Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center animated-bg overflow-hidden">
+            <!-- Floating Elements -->
+            <div class="absolute inset-0">
+                <div class="floating absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                <div class="floating absolute top-40 right-20 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl"
+                    style="animation-delay: -2s"></div>
+                <div class="floating absolute bottom-20 left-1/4 w-16 h-16 bg-blue-400/20 rounded-full blur-xl"
+                    style="animation-delay: -4s"></div>
+            </div>
+
+            <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+                <!-- Profile Image with 3D Effect -->
+                <div class="mb-8 relative">
+                    <div class="w-64 h-64 mx-auto relative">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse blur-xl opacity-50">
+                        </div>
+                        <img src="images/Adnan Professional.jpg" alt="Adnan"
+                            class="relative w-full h-full rounded-full object-cover shadow-2xl border-4 border-white/20 glass-card floating">
+                    </div>
+                </div>
+
+                <!-- Animated Name -->
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 font-space-grotesk">
+                    <span id="typewriter-name" class="typewriter inline-block overflow-hidden whitespace-nowrap"></span>
+                </h1>
+
+                <!-- Subtitle -->
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-yellow-300">
+                    Industrial & Production Engineer
+                </h2>
+
+                <!-- Description -->
+                <p class="text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed opacity-90">
+                    A dedicated and analytical final-year Industrial and Production Engineering student from BUET,
+                    with a strong foundation in process optimization, quality control, manufacturing and project
+                    management. Eager to drive efficiency and innovation.
+                </p>
+
+                <!-- Enhanced Social Links -->
+                <div class="flex items-center justify-center space-x-6 mb-8">
+                    <a href="mailto:adnanistiak111@gmail.com"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fas fa-envelope text-2xl group-hover:text-yellow-400 transition-colors"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/istiak-adnan" target="_blank"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fab fa-linkedin text-2xl group-hover:text-blue-400 transition-colors"></i>
+                    </a>
+                    <div class="glass-card p-4 rounded-full">
+                        <i class="fas fa-map-marker-alt text-2xl text-red-400"></i>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <p class="text-lg font-medium opacity-90">
+                    <i class="fas fa-university mr-2"></i>
+                    BUET, Palashi, Dhaka
+                </p>
+
+                <!-- CTA Button -->
+                <div class="mt-8">
+                    <a href="#about" class="btn-gradient">
+                        Explore My Journey
+                        <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced About Section -->
+        <section id="about" class="py-20 px-4 sm:px-8 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        About Me
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                        I am a final-year Industrial and Production Engineering student at Bangladesh University of
+                        Engineering and Technology (BUET). While my studies have deepened my understanding of industrial
+                        processes,
+                        my involvement in campus outreach and event promotion has enhanced my communication and
+                        organizational skills.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Education Card -->
+                    <div class="glass-card card-3d p-8 scroll-reveal">
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-graduation-cap text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Education</h3>
+
+                            <div class="space-y-6">
+                                <div class="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg">
+                                    <h4 class="text-lg font-bold text-indigo-600">Bangladesh University of Engineering
+                                        and Technology (BUET)</h4>
+                                    <p class="text-gray-600 mb-2">Department of Industrial and Production Engineering
+                                    </p>
+                                    <p class="text-sm text-gray-500">2021 - Present</p>
+                                </div>
+
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
+                                    <h4 class="text-lg font-bold text-purple-600">Govt. Azizul Haque College, Bogura
+                                    </h4>
+                                    <p class="text-gray-600 mb-2">Science Background</p>
+                                    <p class="text-sm text-gray-500">2018 - 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Core Strengths Card -->
+                    <div class="glass-card card-3d p-8 scroll-reveal">
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <i class="fas fa-lightbulb text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Core Strengths</h3>
+
+                            <div class="grid grid-cols-2 gap-6 mb-8">
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-brain text-xl text-white"></i>
+                                    </div>
+                                    <p class="font-medium text-gray-700">Problem Solving</p>
+                                </div>
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-comments text-xl text-white"></i>
+                                    </div>
+                                    <p class="font-medium text-gray-700">Communication</p>
+                                </div>
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-users text-xl text-white"></i>
+                                    </div>
+                                    <p class="font-medium text-gray-700">Teamwork</p>
+                                </div>
+                                <div class="group cursor-pointer">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-clock text-xl text-white"></i>
+                                    </div>
+                                    <p class="font-medium text-gray-700">Time Management</p>
+                                </div>
+                            </div>
+
+                            <div class="border-t pt-6">
+                                <h4 class="text-lg font-semibold text-gray-700 mb-4">Interests & Hobbies</h4>
+                                <div class="flex flex-wrap justify-center gap-2">
+                                    <span
+                                        class="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm">Photography</span>
+                                    <span
+                                        class="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-sm">Reflective
+                                        Thinking</span>
+                                    <span
+                                        class="px-3 py-1 bg-gradient-to-r from-pink-100 to-rose-100 text-pink-700 rounded-full text-sm">Singing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Experience Section with Interactive Timeline -->
+        <section id="experience" class="py-20 px-4 sm:px-8 bg-gray-50 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Professional Journey
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        My journey has been shaped by diverse experiences, from academic roles to leading hackathon
+                        teams,
+                        each contributing to my growth as an engineer and leader.
+                    </p>
+                </div>
+
+                <!-- Interactive Timeline -->
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full">
+                    </div>
+
+                    <!-- Timeline Items -->
+                    <div class="space-y-12">
+                        <!-- Experience Item 1 -->
+                        <div class="timeline-item flex items-center justify-center">
+                            <div class="relative flex items-center w-full max-w-4xl">
+                                <!-- Timeline Dot -->
+                                <div
+                                    class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full border-4 border-white shadow-lg z-10 pulse-glow">
+                                </div>
+
+                                <!-- Content -->
+                                <div class="w-5/12 pr-8 text-right">
+                                    <div class="glass-card p-6 card-3d">
+                                        <div class="text-sm font-bold text-indigo-600 mb-2">May 2023 - Present</div>
+                                        <h4 class="text-xl font-bold mb-3">Teacher - Materials Department</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Udvash (Part-time)</p>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Reviewing and creating syllabus-based questions</li>
+                                            <li>• Maintaining content quality and consistency</li>
+                                            <li>• Ensuring timely task completion</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-2/12"></div>
+                                <div class="w-5/12"></div>
+                            </div>
+                        </div>
+
+                        <!-- Experience Item 2 -->
+                        <div class="timeline-item flex items-center justify-center">
+                            <div class="relative flex items-center w-full max-w-4xl">
+                                <div
+                                    class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full border-4 border-white shadow-lg z-10 pulse-glow">
+                                </div>
+
+                                <div class="w-5/12"></div>
+                                <div class="w-2/12"></div>
+                                <div class="w-5/12 pl-8">
+                                    <div class="glass-card p-6 card-3d">
+                                        <div class="text-sm font-bold text-purple-600 mb-2">Jun 2025 – Jul 2025</div>
+                                        <h4 class="text-xl font-bold mb-3">Campus Ambassador</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Three Zero Hackathon 2025</p>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Promoted event at BUET campus</li>
+                                            <li>• Coordinated outreach activities</li>
+                                            <li>• Official Campus Ambassador role</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experience Item 3 -->
+                        <div class="timeline-item flex items-center justify-center">
+                            <div class="relative flex items-center w-full max-w-4xl">
+                                <div
+                                    class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-orange-500 to-red-600 rounded-full border-4 border-white shadow-lg z-10 pulse-glow">
+                                </div>
+
+                                <div class="w-5/12 pr-8 text-right">
+                                    <div class="glass-card p-6 card-3d">
+                                        <div class="text-sm font-bold text-orange-600 mb-2">Oct 2024 - Nov 2024</div>
+                                        <h4 class="text-xl font-bold mb-3">Team Member - "Munhamanna Chocolate"</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Hult Prize 2024 (Case Competition)</p>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Co-founded sustainable chocolate concept</li>
+                                            <li>• Conducted market analysis and pitched business model</li>
+                                            <li>• Advanced to first round of BUET Hult Prize 2024</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-2/12"></div>
+                                <div class="w-5/12"></div>
+                            </div>
+                        </div>
+
+                        <!-- Experience Item 4 -->
+                        <div class="timeline-item flex items-center justify-center">
+                            <div class="relative flex items-center w-full max-w-4xl">
+                                <div
+                                    class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full border-4 border-white shadow-lg z-10 pulse-glow">
+                                </div>
+
+                                <div class="w-5/12"></div>
+                                <div class="w-2/12"></div>
+                                <div class="w-5/12 pl-8">
+                                    <div class="glass-card p-6 card-3d">
+                                        <div class="text-sm font-bold text-blue-600 mb-2">Jun 2024</div>
+                                        <h4 class="text-xl font-bold mb-3">Industrial Visit</h4>
+                                        <p class="text-sm text-gray-600 mb-2">PRAN & RFL Industrial Parks</p>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Observed plastic manufacturing processes</li>
+                                            <li>• Gained experience with CNC milling, wire EDM</li>
+                                            <li>• Learned Six Sigma, Poka-yoke, and SMV</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Experience Item 5 -->
+                        <div class="timeline-item flex items-center justify-center">
+                            <div class="relative flex items-center w-full max-w-4xl">
+                                <div
+                                    class="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full border-4 border-white shadow-lg z-10 pulse-glow">
+                                </div>
+
+                                <div class="w-5/12 pr-8 text-right">
+                                    <div class="glass-card p-6 card-3d">
+                                        <div class="text-sm font-bold text-green-600 mb-2">Aug 2024</div>
+                                        <h4 class="text-xl font-bold mb-3">Volunteer</h4>
+                                        <p class="text-sm text-gray-600 mb-2">Team Badhan, BUET Branch</p>
+                                        <ul class="text-sm text-gray-700 space-y-1">
+                                            <li>• Contributed to flood relief efforts</li>
+                                            <li>• Fundraising and organizing aid distribution</li>
+                                            <li>• Supported severely affected communities</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="w-2/12"></div>
+                                <div class="w-5/12"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Skills Section -->
+        <section id="skills" class="py-20 px-4 sm:px-8 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Core Competencies
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        My skill set is a balanced mix of technical proficiency and critical soft skills essential for
+                        leadership and collaboration.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Technical Skills -->
+                    <div class="glass-card p-8 card-3d scroll-reveal">
+                        <div class="text-center mb-8">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-code text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Technical Skills</h3>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">MS Excel</span>
+                                    <span class="text-sm text-gray-600">90%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">SolidWorks</span>
+                                    <span class="text-sm text-gray-600">80%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">MS PowerPoint</span>
+                                    <span class="text-sm text-gray-600">80%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">AutoCAD</span>
+                                    <span class="text-sm text-gray-600">70%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">MS Word</span>
+                                    <span class="text-sm text-gray-600">70%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">C Programming</span>
+                                    <span class="text-sm text-gray-600">60%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Basic Python</span>
+                                    <span class="text-sm text-gray-600">50%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Basic Video Editing</span>
+                                    <span class="text-sm text-gray-600">50%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="glass-card p-8 card-3d scroll-reveal">
+                        <div class="text-center mb-8">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Soft Skills</h3>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Problem Solving</span>
+                                    <span class="text-sm text-gray-600">90%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Critical Thinking</span>
+                                    <span class="text-sm text-gray-600">90%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Team Leadership</span>
+                                    <span class="text-sm text-gray-600">90%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Time Management</span>
+                                    <span class="text-sm text-gray-600">80%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Teamwork</span>
+                                    <span class="text-sm text-gray-600">80%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Communication & Presentation</span>
+                                    <span class="text-sm text-gray-600">80%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 80%"></div>
+                                </div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Market Research</span>
+                                    <span class="text-sm text-gray-600">70%</span>
+                                </div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
+                                        style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-8 bg-gray-50 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Key Projects
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        Through various academic and extracurricular projects, I've applied theoretical knowledge to
+                        solve real-world problems.
+                    </p>
+                </div>
+
+                <!-- Enhanced Accordion -->
+                <div class="space-y-6">
+                    <!-- Project 1 -->
+                    <div class="accordion-enhanced accordion-item">
+                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-microchip text-white"></i>
+                                </div>
+                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                    Smart Real-Time Pill Dispensing and Packaging System using IoT and Embedded Systems
+                                </span>
+                            </div>
+                            <span
+                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-gray-200">
+                                <p class="text-gray-700 mb-4 leading-relaxed">
+                                    Developed an IoT-based pill dispensing and packaging system using Arduino and ESP32.
+                                    The system features real-time pill counting, weight measurement, and defective
+                                    bottle
+                                    rejection, improving accuracy and efficiency in pharmaceutical packaging.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">IoT</span>
+                                    <span
+                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Arduino</span>
+                                    <span
+                                        class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">ESP32</span>
+                                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Embedded
+                                        Systems</span>
+                                </div>
+                                <p class="mb-4"><strong>Timeline:</strong> Jun 2025 – Jul 2025</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://ipe20-buet.top/groups/all_groups/b_3.html"
+                                        class="btn-gradient text-sm">
+                                        <i class="fas fa-external-link-alt mr-2"></i>Project Overview
+                                    </a>
+                                    <a href="https://youtu.be/k48h_o7BPG4?si=o_r9_2MXHW77Ubsx"
+                                        class="bg-gradient-to-r from-red-500 to-pink-600 text-white px-4 py-2 rounded-full text-sm hover:shadow-lg transition-all">
+                                        <i class="fab fa-youtube mr-2"></i>Video Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="accordion-enhanced accordion-item">
+                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-utensils text-white"></i>
+                                </div>
+                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                    Product Design – Slice and Scrape (Multi-Functional Vegetable Cutter)
+                                </span>
+                            </div>
+                            <span
+                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-gray-200">
+                                <p class="text-gray-700 mb-4 leading-relaxed">
+                                    As part of our product design course, we developed <em>Slice and Scrape</em>, a
+                                    multifunctional
+                                    kitchen tool that combines fruit and vegetable slicing with a coconut scraping
+                                    feature.
+                                    Responsibilities included cost analysis, functional decomposition, black-box
+                                    modeling,
+                                    prototype building, and presenting the product through slides and a poster.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Product
+                                        Design</span>
+                                    <span
+                                        class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Prototyping</span>
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Cost
+                                        Analysis</span>
+                                    <span
+                                        class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Functional
+                                        Design</span>
+                                </div>
+                                <p class="mb-4"><strong>Timeline:</strong> Sep 2024 – Jul 2025</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://drive.google.com/file/d/14CYHKYSwveabi1GK01duwrjMFtBE_BkS/view?usp=drive_link"
+                                        class="btn-gradient text-sm">
+                                        <i class="fas fa-file-pdf mr-2"></i>Project Poster
+                                    </a>
+                                    <a href="https://drive.google.com/file/d/1HaIXgY6Nj1Ce2tOGczlEilbjDsP1PEmB/view?usp=drive_link"
+                                        class="bg-gradient-to-r from-green-500 to-teal-600 text-white px-4 py-2 rounded-full text-sm hover:shadow-lg transition-all">
+                                        <i class="fas fa-eye mr-2"></i>Visual Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="accordion-enhanced accordion-item">
+                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-car text-white"></i>
+                                </div>
+                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                    SolidWorks Design – RASTAR LaFerrari Remote Control Car (1:14 Scale)
+                                </span>
+                            </div>
+                            <span
+                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-gray-200">
+                                <p class="text-gray-700 mb-4 leading-relaxed">
+                                    Designed a 1:14 scale model of a Rastar LaFerrari remote control car in SolidWorks.
+                                    Applied advanced 3D surfacing tools and part modeling techniques to capture
+                                    complex curves and details, improving CAD design proficiency.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">SolidWorks</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">3D
+                                        Modeling</span>
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">CAD
+                                        Design</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Surface
+                                        Modeling</span>
+                                </div>
+                                <p class="mb-4"><strong>Timeline:</strong> Jan 2023 – Feb 2023</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://grabcad.com/library/laferrari-rastar-1"
+                                        class="btn-gradient text-sm">
+                                        <i class="fas fa-download mr-2"></i>CAD Files
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="accordion-enhanced accordion-item">
+                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-home text-white"></i>
+                                </div>
+                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                    AutoCAD Design – Residential Floor Layout
+                                </span>
+                            </div>
+                            <span
+                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-gray-200">
+                                <p class="text-gray-700 mb-4 leading-relaxed">
+                                    Designed a detailed residential house floor plan as part of the Engineering Graphics
+                                    Sessional course. Applied AutoCAD for technical drawing and space optimization,
+                                    gaining practical design experience.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">AutoCAD</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Technical
+                                        Drawing</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Space
+                                        Planning</span>
+                                    <span
+                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Architecture</span>
+                                </div>
+                                <p class="mb-4"><strong>Project Type:</strong> Academic Project</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Research Section -->
+        <section id="research" class="py-20 px-4 sm:px-8 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Research & Publications
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        Academic research and publications that showcase my commitment to innovation and knowledge
+                        creation.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Publication 1 -->
+                    <div class="accordion-enhanced accordion-item">
+                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-file-alt text-white"></i>
+                                </div>
+                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                    Smart Real-time Monitoring and Control of Pill Dispensing and Packaging Process
+                                </span>
+                            </div>
+                            <span
+                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-gray-200">
+                                <p class="text-gray-700 mb-4 leading-relaxed">
+                                    This research focused on developing an innovative IoT-based pill dispensing and
+                                    packaging system.
+                                    By integrating Arduino and ESP32, the system achieves real-time pill counting,
+                                    precise weight
+                                    measurement, and automated rejection of defective bottles, significantly improving
+                                    accuracy and
+                                    operational efficiency in pharmaceutical packaging.
+                                </p>
+                                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 p-4 rounded-lg mb-4">
+                                    <p class="mb-2"><strong>Authors:</strong> Md. Istiak Adnan, et al.</p>
+                                    <p class="mb-2"><strong>Journal:</strong> International Journal of Smart Systems</p>
+                                    <p><strong>Status:</strong> Under Review (2025)</p>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm">IoT</span>
+                                    <span
+                                        class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Pharmaceutical</span>
+                                    <span
+                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Automation</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Real-time
+                                        Systems</span>
+                                </div>
+                                <a href="#" class="btn-gradient text-sm">
+                                    <i class="fas fa-file-pdf mr-2"></i>View Publication
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Publication 2 -->
+                    <div class="accordion-enhanced accordion-item">
+                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-graduation-cap text-white"></i>
+                                </div>
+                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                    IoT-Based Smart Conveyor System for Pill Packaging (Course Project)
+                                </span>
+                            </div>
+                            <span
+                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                        </button>
+                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                            <div class="p-6 border-t border-gray-200">
+                                <p class="text-gray-700 mb-4 leading-relaxed">
+                                    This project automates pill dispensing and packaging in the pharmaceutical industry
+                                    to minimize
+                                    human error and improve efficiency. The system integrates IR sensors, load cells,
+                                    servo motors,
+                                    and ESP32 microcontroller for real-time monitoring and control.
+                                </p>
+                                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg mb-4">
+                                    <p class="mb-2"><strong>Course:</strong> IPE 419, Department of IPE, BUET</p>
+                                    <p class="mb-2"><strong>Supervisor:</strong> Dr. Nafis Ahmad</p>
+                                    <p><strong>Team:</strong> 6 Members including Md. Istiak Adnan</p>
+                                </div>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span
+                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">IoT</span>
+                                    <span
+                                        class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm">Automation</span>
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">ESP32</span>
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Team
+                                        Project</span>
+                                </div>
+                                <div class="flex flex-wrap gap-3">
+                                    <a href="https://ipe20-buet.top/groups/all_groups/b_3.html"
+                                        class="btn-gradient text-sm">
+                                        <i class="fas fa-external-link-alt mr-2"></i>Project Overview
+                                    </a>
+                                    <a href="https://youtu.be/k48h_o7BPG4?si=o_r9_2MXHW77Ubsx"
+                                        class="bg-gradient-to-r from-red-500 to-pink-600 text-white px-4 py-2 rounded-full text-sm hover:shadow-lg transition-all">
+                                        <i class="fab fa-youtube mr-2"></i>Video Demo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Photos Section -->
+        <section id="photos" class="py-20 px-4 sm:px-8 bg-gray-50 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Photo Gallery
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        A collection of moments and visuals from my projects, travels, and personal interests.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Photo 1 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/IoT-project.jpeg" alt="IoT project" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">IoT Project
+                            </h4>
+                            <p class="text-sm text-gray-600">Smart Real-Time Pill Dispensing System</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/laferrari_rc.jpeg" alt="LaFerrari RC" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">LaFerrari
+                                RC</h4>
+                            <p class="text-sm text-gray-600">SolidWorks 3D Design Project</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/Me_at_pran-rfl.jpg" alt="PRAN-RFL Visit" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Industrial
+                                Visit</h4>
+                            <p class="text-sm text-gray-600">PRAN-RFL Industrial Park Experience</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/riding horse.jpeg" alt="Photography" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Photography
+                            </h4>
+                            <p class="text-sm text-gray-600">Personal Photography Interest</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 5 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/me at cox bazar.jpg" alt="Cox's Bazar" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Travel
+                                Memory</h4>
+                            <p class="text-sm text-gray-600">Cox's Bazar Adventure</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 6 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/slice and scrape.jpeg" alt="Product Design" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Product
+                                Design</h4>
+                            <p class="text-sm text-gray-600">Slice and Scrape Innovation</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo 7 -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                        <img src="images/buet_badhan.jpeg" alt="Volunteering" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">
+                                Volunteering</h4>
+                            <p class="text-sm text-gray-600">Team Badhan Community Service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Achievements Section -->
+        <section id="achievements" class="py-20 px-4 sm:px-8 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Achievements & Certifications
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        My dedication to continuous learning and excellence reflected in academic distinctions and
+                        professional certifications.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Achievement 1 -->
+                    <div class="glass-card p-6 card-3d scroll-reveal">
+                        <div class="flex items-center">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mr-6 floating">
+                                <i class="fas fa-medal text-2xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-2">Lean & Quality Management, Six Sigma, Continuous
+                                    Improvement</h4>
+                                <p class="text-gray-600 mb-1">MTF Institute of Management, Technology and Finance</p>
+                                <p class="text-sm text-gray-500">Udemy • Issued: July 2025</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="glass-card p-6 card-3d scroll-reveal">
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mr-6 floating"
+                                style="animation-delay: -1s">
+                                <i class="fas fa-chart-bar text-2xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-2">Introduction to Data Analysis using Microsoft Excel
+                                </h4>
+                                <p class="text-gray-600 mb-1">Coursera Project Network</p>
+                                <p class="text-sm text-gray-500">Coursera • Issued: May 2025</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 3 -->
+                    <div class="glass-card p-6 card-3d scroll-reveal">
+                        <div class="flex items-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mr-6 floating"
+                                style="animation-delay: -2s">
+                                <i class="fas fa-file-excel text-2xl text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-xl font-bold mb-2">Excel Skills for Business: Essentials</h4>
+                                <p class="text-gray-600 mb-1">Macquarie University</p>
+                                <p class="text-sm text-gray-500">Coursera • Issued: December 2023</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Contact Section -->
+        <section id="contact"
+            class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 animated-bg text-white overflow-hidden py-16 sm:px-8">
+            <!-- Floating Contact Icons -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="floating absolute top-20 left-10 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center"
+                    style="animation-delay: 0s">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </div>
+                <div class="floating absolute top-40 right-20 w-20 h-20 bg-white/10 rounded-full flex items-center justify-center"
+                    style="animation-delay: -2s">
+                    <i class="fas fa-phone text-2xl"></i>
+                </div>
+                <div class="floating absolute bottom-32 left-1/4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center"
+                    style="animation-delay: -4s">
+                    <i class="fas fa-map-marker-alt text-xl"></i>
+                </div>
+                <div class="floating absolute top-1/2 right-10 w-14 h-14 bg-white/10 rounded-full flex items-center justify-center"
+                    style="animation-delay: -1s">
+                    <i class="fab fa-linkedin text-xl"></i>
+                </div>
+            </div>
+
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Get in Touch</h2>
+                <div class="w-24 h-1 bg-white mx-auto mb-8"></div>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-12 opacity-90 leading-relaxed">
+                    I am actively seeking new opportunities and would love to discuss how my skills and experience can
+                    benefit you and your team. Feel free to reach out!
+                </p>
+
+                <!-- Enhanced Contact Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- Email Card -->
+                    <a href="mailto:adnanistiak111@gmail.com"
+                        class="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300 group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Email Me</h3>
+                        <p class="text-sm opacity-80">adnanistiak111@gmail.com</p>
+                    </a>
+
+                    <!-- Phone Card -->
+                    <a href="tel:01884562034"
+                        class="glass-card p-8 rounded-2xl hover:scale-105 transition-all duration-300 group">
+                        <div
+                            class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-phone text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Call Me</h3>
+                        <p class="text-sm opacity-80">+880 1884562034</p>
+                    </a>
+                </div>
+
+                <!-- Enhanced Social Links -->
+                <div class="flex flex-wrap justify-center items-center gap-6 mb-12">
+                    <a href="https://linkedin.com/in/istiak-adnan" target="_blank"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fab fa-linkedin text-2xl group-hover:text-blue-400 transition-colors"></i>
+                    </a>
+
+                    <a href="https://www.facebook.com/mdistiak.adnan.9" target="_blank"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fab fa-facebook text-2xl group-hover:text-blue-500 transition-colors"></i>
+                    </a>
+
+                    <a href="https://github.com/IstiakAdnan114" target="_blank"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fab fa-github text-2xl group-hover:text-gray-300 transition-colors"></i>
+                    </a>
+
+                    <a href="https://www.researchgate.net/profile/Md-Istiak-Adnan" target="_blank"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fas fa-graduation-cap text-2xl group-hover:text-green-400 transition-colors"></i>
+                    </a>
+
+                    <a href="https://grabcad.com/md.istiak.adnan-1" target="_blank"
+                        class="glass-card p-4 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fas fa-cube text-2xl group-hover:text-orange-400 transition-colors"></i>
+                    </a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="mb-8">
+                    <a href="mailto:adnanistiak111@gmail.com" class="btn-gradient text-lg px-8 py-4">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Let's Work Together
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-sm opacity-60">© 2024 Md. Istiak Adnan. All rights reserved.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Global Variables
+        let particlesSystem;
+
+        // Document Ready
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeApp();
+        });
+
+        // Initialize Application
+        function initializeApp() {
+            // Hide loading screen after delay
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 2000);
+
+            // Initialize all components
+            initializeParticles();
+            initializeTypewriter();
+            initializeScrollAnimations();
+            initializeNavigation();
+            initializeThemeToggle();
+            initializeAccordions();
+            initializeTimeline();
+            initializeSkillBars();
+            initializeParallax();
+        }
+
+        // Particle System
+        function initializeParticles() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const particleCount = 100;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.size = Math.random() * 2 + 1;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(99, 102, 241, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            // Create particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            // Animation loop
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+
+                // Draw connections
+                particles.forEach((particle, i) => {
+                    particles.slice(i + 1).forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(particle.x, particle.y);
+                            ctx.lineTo(otherParticle.x, otherParticle.y);
+                            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - distance / 100)})`;
+                            ctx.stroke();
+                        }
+                    });
+                });
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            animateParticles();
+
+            // Resize handler
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Typewriter Effect
+        function initializeTypewriter() {
+            const elements = [
+                { id: 'intro-text1', text: 'MD. ISTIAK ADNAN', speed: 100 },
+                { id: 'typewriter-name', text: 'Md. Istiak Adnan', speed: 150 }
+            ];
+
+            elements.forEach(element => {
+                typeWriter(element.id, element.text, element.speed);
+            });
+        }
+
+        function typeWriter(elementId, text, speed) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Scroll Animations
+        function initializeScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Navigation
+        function initializeNavigation() {
+            const hamburger = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbar = document.getElementById('navbar');
+
+            // Mobile menu toggle
+            hamburger.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.contains('active');
+
+                if (isOpen) {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 500);
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('active');
+                    }, 10);
+                }
+
+                // Animate hamburger
+                const lines = hamburger.querySelectorAll('.hamburger-line');
+                if (!isOpen) {
+                    lines[0].style.transform = 'rotate(45deg) translateY(6px)';
+                    lines[1].style.opacity = '0';
+                    lines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+                } else {
+                    lines[0].style.transform = 'none';
+                    lines[1].style.opacity = '1';
+                    lines[2].style.transform = 'none';
+                }
+            });
+
+            // Close menu on link click
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 500);
+                });
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('shadow-lg');
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Theme Toggle
+        function initializeThemeToggle() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            document.documentElement.setAttribute('data-theme', currentTheme);
+
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Add transition effect
+            document.body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                document.body.style.transition = '';
+            }, 300);
+        }
+
+        // Accordions
+        function initializeAccordions() {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const accordionContent = button.nextElementSibling;
+                    const accordionArrow = button.querySelector('.accordion-arrow');
+                    const isActive = button.classList.contains('active');
+
+                    // Close all other accordions
+                    accordionButtons.forEach(otherButton => {
+                        if (otherButton !== button) {
+                            otherButton.classList.remove('active');
+                            const otherContent = otherButton.nextElementSibling;
+                            const otherArrow = otherButton.querySelector('.accordion-arrow');
+                            otherContent.style.maxHeight = '0px';
+                            otherArrow.style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    // Toggle current accordion
+                    button.classList.toggle('active');
+
+                    if (!isActive) {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                        accordionArrow.style.transform = 'rotate(180deg)';
+                    } else {
+                        accordionContent.style.maxHeight = '0px';
+                        accordionArrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        }
+
+        // Timeline Animation
+        function initializeTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('animate');
+                        }, index * 200);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            timelineItems.forEach(item => {
+                timelineObserver.observe(item);
+            });
+        }
+
+        // Skill Bars Animation
+        function initializeSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.8
+            });
+
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+        }
+
+        // Parallax Effect
+        function initializeParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.floating');
+
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+        }
+
+        // Performance optimization: Throttle scroll events
+        function throttle(func, limit) {
+            let inThrottle;
+            return function () {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
+        // Add custom cursor effect
+        document.addEventListener('mousemove', throttle((e) => {
+            const cursor = document.createElement('div');
+            cursor.className = 'fixed w-2 h-2 bg-indigo-500 rounded-full pointer-events-none z-50 opacity-50';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.animation = 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite';
+            document.body.appendChild(cursor);
+
+            setTimeout(() => {
+                cursor.remove();
+            }, 1000);
+        }, 100));
+
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn-gradient').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                if (this.href && this.href.startsWith('mailto:')) return;
+
+                e.preventDefault();
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                    if (this.href) window.location.href = this.href;
+                }, 150);
+            });
+        });
+
+        // Add Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                // Easter egg: Add rainbow mode
+                document.body.style.animation = 'hue-rotate 2s linear infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 10000);
+                konamiCode = [];
+            }
+        });
+
+        // Add CSS for Easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes hue-rotate {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
