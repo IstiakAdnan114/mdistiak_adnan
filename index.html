@@ -34,8 +34,8 @@
         }
 
         [data-theme="dark"] {
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
+            --text-primary: #fbfbf9;
+            --text-secondary: #f17e0c;
             --bg-primary: #111827;
             --bg-secondary: #1f2937;
             --bg-glass: rgba(17, 24, 39, 0.3);
@@ -225,18 +225,21 @@
         .skill-bar {
             position: relative;
             overflow: hidden;
+            height: 12px;
+            background-color: #e5e7eb;
+            /* gray background */
+            border-radius: 9999px;
         }
 
         .skill-progress {
             height: 100%;
-            background: var(--gradient-primary);
-            transform: translateX(-100%);
-            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 0;
+            /* start at 0, fill will animate */
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            border-radius: 9999px;
+            transition: width 1.5s ease-in-out;
         }
 
-        .skill-progress.animate {
-            transform: translateX(0);
-        }
 
         /* Photo Gallery Hover Effects */
         .photo-hover {
@@ -881,83 +884,86 @@
                         </div>
 
                         <div class="space-y-6">
+                            <!-- MS Excel -->
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">MS Excel</span>
                                     <span class="text-sm text-gray-600">90%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 90%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="90%"></div>
                                 </div>
                             </div>
-
+                            <!-- Other technical skills follow the same pattern... -->
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">SolidWorks</span>
                                     <span class="text-sm text-gray-600">80%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 80%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="80%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">MS PowerPoint</span>
                                     <span class="text-sm text-gray-600">80%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 80%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="80%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">AutoCAD</span>
                                     <span class="text-sm text-gray-600">70%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 70%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="70%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">MS Word</span>
                                     <span class="text-sm text-gray-600">70%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 70%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="70%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">C Programming</span>
                                     <span class="text-sm text-gray-600">60%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 60%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="60%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Basic Python</span>
                                     <span class="text-sm text-gray-600">50%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 50%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="50%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Basic Video Editing</span>
                                     <span class="text-sm text-gray-600">50%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
-                                    <div class="skill-progress h-full" style="width: 50%"></div>
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
+                                    <div class="skill-progress h-full bg-gradient-to-r from-blue-500 to-purple-600"
+                                        data-percentage="50%"></div>
                                 </div>
                             </div>
                         </div>
@@ -974,80 +980,76 @@
                         </div>
 
                         <div class="space-y-6">
+                            <!-- Problem Solving -->
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Problem Solving</span>
                                     <span class="text-sm text-gray-600">90%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 90%"></div>
+                                        data-percentage="90%"></div>
                                 </div>
                             </div>
-
+                            <!-- Other soft skills follow the same pattern... -->
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Critical Thinking</span>
                                     <span class="text-sm text-gray-600">90%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 90%"></div>
+                                        data-percentage="90%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Team Leadership</span>
                                     <span class="text-sm text-gray-600">90%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 90%"></div>
+                                        data-percentage="90%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Time Management</span>
                                     <span class="text-sm text-gray-600">80%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 80%"></div>
+                                        data-percentage="80%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Teamwork</span>
                                     <span class="text-sm text-gray-600">80%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 80%"></div>
+                                        data-percentage="80%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Communication & Presentation</span>
                                     <span class="text-sm text-gray-600">80%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 80%"></div>
+                                        data-percentage="80%"></div>
                                 </div>
                             </div>
-
                             <div class="skill-item">
                                 <div class="flex justify-between mb-2">
                                     <span class="font-medium">Market Research</span>
                                     <span class="text-sm text-gray-600">70%</span>
                                 </div>
-                                <div class="skill-bar h-3 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="skill-bar h-3 bg-gray-200 rounded-full">
                                     <div class="skill-progress h-full bg-gradient-to-r from-purple-500 to-pink-600"
-                                        style="width: 70%"></div>
+                                        data-percentage="70%"></div>
                                 </div>
                             </div>
                         </div>
@@ -1960,24 +1962,29 @@
             });
         }
 
+        // This function should already be in your <script> tag at the bottom
+
         // Skill Bars Animation
         function initializeSkillBars() {
             const skillBars = document.querySelectorAll('.skill-progress');
 
-            const skillObserver = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
+                        const bar = entry.target;
+                        const percentage = bar.dataset.percentage;
+                        bar.style.width = percentage;
+                        observer.unobserve(bar); // stop observing after animation
                     }
                 });
-            }, {
-                threshold: 0.8
-            });
+            }, { threshold: 0.3 });
 
-            skillBars.forEach(bar => {
-                skillObserver.observe(bar);
-            });
+            skillBars.forEach(bar => observer.observe(bar));
         }
+
+        // call after DOM loaded
+        document.addEventListener('DOMContentLoaded', initializeSkillBars);
+
 
         // Parallax Effect
         function initializeParallax() {
