@@ -1998,6 +1998,63 @@
             });
         }
 
+        // Performance optimization: Throttle scroll events
+        function throttle(func, limit) {
+            let inThrottle;
+            return function () {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+        // Add custom cursor effect
+        document.addEventListener('mousemove', throttle((e) => {
+            const cursor = document.createElement('div');
+            cursor.className = 'fixed w-2 h-2 bg-indigo-500 rounded-full pointer-events-none z-50 opacity-50';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.animation = 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite';
+            document.body.appendChild(cursor);
+
+            setTimeout(() => {
+                cursor.remove();
+            }, 1000);
+        }, 100));
+
+        // Add Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                // Easter egg: Add rainbow mode
+                document.body.style.animation = 'hue-rotate 2s linear infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 10000);
+                konamiCode = [];
+            }
+        });
+
+        // Add CSS for Easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes hue-rotate {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
     </script>
 </body>
 
