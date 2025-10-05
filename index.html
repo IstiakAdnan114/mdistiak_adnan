@@ -1514,8 +1514,9 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <!-- Photo 1 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 1 - IoT Project -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('iot')">
                         <img src="images/IoT-project.jpeg" alt="IoT project" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">IoT Project
@@ -1524,8 +1525,9 @@
                         </div>
                     </div>
 
-                    <!-- Photo 2 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 2 - Design -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('design')">
                         <img src="images/laferrari_rc.jpeg" alt="LaFerrari RC" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">LaFerrari
@@ -1534,8 +1536,9 @@
                         </div>
                     </div>
 
-                    <!-- Photo 3 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 3 - Industrial -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('industrial')">
                         <img src="images/Me_at_pran-rfl.jpg" alt="PRAN-RFL Visit" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Industrial
@@ -1544,8 +1547,9 @@
                         </div>
                     </div>
 
-                    <!-- Photo 4 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 4 - Photography -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('photography')">
                         <img src="images/riding horse.jpeg" alt="Photography" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Photography
@@ -1554,8 +1558,9 @@
                         </div>
                     </div>
 
-                    <!-- Photo 5 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 5 - Travel -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('travel')">
                         <img src="images/me at cox bazar.jpg" alt="Cox's Bazar" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Travel
@@ -1564,8 +1569,9 @@
                         </div>
                     </div>
 
-                    <!-- Photo 6 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 6 - Product Design -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('product')">
                         <img src="images/slice and scrape.jpeg" alt="Product Design" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">Product
@@ -1574,8 +1580,9 @@
                         </div>
                     </div>
 
-                    <!-- Photo 7 -->
-                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer">
+                    <!-- Photo 7 - Volunteering -->
+                    <div class="photo-hover glass-card rounded-2xl overflow-hidden group cursor-pointer"
+                        onclick="openGalleryModal('volunteering')">
                         <img src="images/buet_badhan.jpeg" alt="Volunteering" class="w-full h-64 object-cover">
                         <div class="p-4">
                             <h4 class="font-bold text-lg mb-2 group-hover:text-indigo-600 transition-colors">
@@ -1586,6 +1593,97 @@
                 </div>
             </div>
         </section>
+
+        <!-- Gallery Category Modal -->
+        <div id="galleryModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden overflow-y-auto">
+            <div class="min-h-screen px-4 py-8">
+                <!-- Close Button -->
+                <button onclick="closeGalleryModal()"
+                    class="fixed top-4 right-4 z-50 text-white hover:text-gray-300 transition-colors">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <!-- Modal Header -->
+                <div class="text-center mb-8">
+                    <h3 id="modalTitle" class="text-3xl md:text-4xl font-bold text-white mb-2"></h3>
+                    <p id="modalSubtitle" class="text-gray-300 text-lg"></p>
+                </div>
+
+                <!-- Image Grid -->
+                <div id="modalImageGrid"
+                    class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-98 z-[60] hidden">
+            <div class="w-full h-full flex items-center justify-center">
+                <button onclick="closeLightbox()"
+                    class="fixed top-4 right-4 z-[70] text-white hover:text-gray-300 transition-colors">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+                <button onclick="previousImage()"
+                    class="fixed left-4 top-1/2 -translate-y-1/2 z-[70] text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <button onclick="nextImage()"
+                    class="fixed right-4 top-1/2 -translate-y-1/2 z-[70] text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div class="relative w-full h-full flex items-center justify-center p-4">
+                    <div id="imageContainer" class="relative">
+                        <img id="lightboxImage" src="" alt=""
+                            class="max-w-full max-h-[85vh] object-contain transition-transform duration-300">
+                    </div>
+
+                    <div
+                        class="fixed top-6 left-1/2 -translate-x-1/2 z-[70] bg-black bg-opacity-70 px-4 py-2 rounded-full">
+                        <span id="imageCounter" class="text-white text-sm"></span>
+                    </div>
+
+                    <div
+                        class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[70] bg-black bg-opacity-70 px-6 py-3 rounded-full max-w-2xl">
+                        <p id="imageCaption" class="text-white text-center"></p>
+                    </div>
+                </div>
+
+                <div
+                    class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[70] flex gap-3 bg-black bg-opacity-70 px-6 py-3 rounded-full">
+                    <button onclick="zoomOut()" class="text-white hover:text-gray-300" title="Zoom Out">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
+                        </svg>
+                    </button>
+                    <button onclick="resetZoom()" class="text-white hover:text-gray-300" title="Reset">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </button>
+                    <button onclick="zoomIn()" class="text-white hover:text-gray-300" title="Zoom In">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <!-- Enhanced Achievements Section -->
         <section id="achievements" class="py-20 px-4 sm:px-8 scroll-reveal">
@@ -1603,7 +1701,7 @@
                 </div>
 
                 <div class="space-y-6">
-                    <!-- Achievement 1 
+                    <!-- Achievement 1 -->
                     <div class="glass-card p-6 card-3d scroll-reveal">
                         <div class="flex items-center">
                             <div
@@ -1629,7 +1727,7 @@
                             </div>
                         </div>
                     </div>
-    -->
+
 
 
                     <!-- Achievement 2 -->
@@ -2214,7 +2312,229 @@
         document.head.appendChild(style);
 
     </script>
+    <script>
+        // Photo Gallery Data
+        const galleryData = {
+            iot: {
+                title: "IoT Projects",
+                subtitle: "Smart Systems and Connected Devices",
+                images: [
+                    { src: "images/IoT-project.jpeg", alt: "Smart Pill Dispensing System", caption: "IoT-based Smart Real-Time Pill Dispensing System" },
+                    { src: "images/iot-2.jpeg", alt: "IoT Dashboard", caption: "Real-time monitoring dashboard" },
+                    { src: "images/iot-3.jpeg", alt: "Sensor Integration", caption: "Sensor network and data collection" },
+                ]
+            },
+            design: {
+                title: "3D Design Projects",
+                subtitle: "CAD Modeling and Product Visualization",
+                images: [
+                    { src: "images/laferrari_rc.jpeg", alt: "LaFerrari RC Model", caption: "LaFerrari RC - SolidWorks 3D Model" },
+                    { src: "images/design-2.jpeg", alt: "CAD Design", caption: "Detailed CAD modeling" },
+                    { src: "images/design-3.jpeg", alt: "Product Rendering", caption: "High-quality product rendering" },
+                ]
+            },
+            industrial: {
+                title: "Industrial Visits",
+                subtitle: "Learning from Manufacturing Excellence",
+                images: [
+                    { src: "images/Me_at_pran-rfl.jpg", alt: "PRAN-RFL Visit", caption: "PRAN-RFL Industrial Park Experience" },
+                    { src: "images/industrial-2.jpg", alt: "Factory Tour", caption: "Manufacturing floor visit" },
+                    { src: "images/industrial-3.jpg", alt: "Production Line", caption: "Automated production systems" },
+                ]
+            },
+            photography: {
+                title: "Photography",
+                subtitle: "Capturing Moments and Perspectives",
+                images: [
+                    { src: "images/riding horse.jpeg", alt: "Horse Riding", caption: "Personal Photography - Horse Riding" },
+                    { src: "images/photo-2.jpeg", alt: "Nature Photography", caption: "Nature and landscape shots" },
+                    { src: "images/photo-3.jpeg", alt: "Urban Scenes", caption: "City life and architecture" },
+                ]
+            },
+            travel: {
+                title: "Travel Adventures",
+                subtitle: "Exploring Bangladesh and Beyond",
+                images: [
+                    { src: "images/me at cox bazar.jpg", alt: "Cox's Bazar", caption: "Cox's Bazar - World's Longest Beach" },
+                    { src: "images/travel-2.jpg", alt: "Mountain View", caption: "Mountain hiking adventure" },
+                    { src: "images/travel-3.jpg", alt: "City Exploration", caption: "Exploring new cities" },
+                ]
+            },
+            product: {
+                title: "Product Design",
+                subtitle: "Innovative Solutions and Prototypes",
+                images: [
+                    { src: "images/slice and scrape.jpeg", alt: "Slice and Scrape", caption: "Slice and Scrape - Kitchen Innovation" },
+                    { src: "images/product-2.jpeg", alt: "Product Prototype", caption: "Product prototype development" },
+                    { src: "images/product-3.jpeg", alt: "Design Iteration", caption: "Design refinement process" },
+                ]
+            },
+            volunteering: {
+                title: "Volunteering",
+                subtitle: "Community Service and Social Impact",
+                images: [
+                    { src: "images/buet_badhan.jpeg", alt: "Team Badhan", caption: "Team Badhan - Blood Donation Community" },
+                    { src: "images/volunteer-2.jpeg", alt: "Community Event", caption: "Community service activities" },
+                    { src: "images/volunteer-3.jpeg", alt: "Blood Donation", caption: "Blood donation drive" },
+                ]
+            }
+        };
+
+        let currentCategory = '';
+        let currentImageIndex = 0;
+        let currentZoom = 1;
+        let currentImages = [];
+
+        // Open Gallery Modal
+        function openGalleryModal(category) {
+            currentCategory = category;
+            const data = galleryData[category];
+
+            if (!data) return;
+
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalSubtitle').textContent = data.subtitle;
+
+            const grid = document.getElementById('modalImageGrid');
+            grid.innerHTML = '';
+
+            data.images.forEach((image, index) => {
+                const imageCard = document.createElement('div');
+                imageCard.className = 'glass-card rounded-xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl';
+                imageCard.onclick = () => openLightbox(category, index);
+
+                imageCard.innerHTML = `
+            <img src="${image.src}" alt="${image.alt}" class="w-full h-48 object-cover">
+            <div class="p-3 bg-white bg-opacity-10">
+                <p class="text-white text-sm text-center">${image.caption}</p>
+            </div>
+        `;
+
+                grid.appendChild(imageCard);
+            });
+
+            document.getElementById('galleryModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Gallery Modal
+        function closeGalleryModal() {
+            document.getElementById('galleryModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Open Lightbox
+        function openLightbox(category, index) {
+            currentCategory = category;
+            currentImageIndex = index;
+            currentImages = galleryData[category].images;
+            currentZoom = 1;
+
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.getElementById('lightbox').classList.add('flex');
+        }
+
+        // Close Lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.getElementById('lightbox').classList.remove('flex');
+            resetZoom();
+        }
+
+        // Update Lightbox Image
+        function updateLightboxImage() {
+            const image = currentImages[currentImageIndex];
+            const lightboxImg = document.getElementById('lightboxImage');
+
+            lightboxImg.src = image.src;
+            lightboxImg.alt = image.alt;
+
+            document.getElementById('imageCounter').textContent =
+                `${currentImageIndex + 1} / ${currentImages.length}`;
+            document.getElementById('imageCaption').textContent = image.caption;
+
+            lightboxImg.style.transform = `scale(${currentZoom})`;
+        }
+
+        // Previous Image
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+            resetZoom();
+            updateLightboxImage();
+        }
+
+        // Next Image
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+            resetZoom();
+            updateLightboxImage();
+        }
+
+        // Zoom In
+        function zoomIn() {
+            currentZoom = Math.min(currentZoom + 0.25, 3);
+            document.getElementById('lightboxImage').style.transform = `scale(${currentZoom})`;
+        }
+
+        // Zoom Out
+        function zoomOut() {
+            currentZoom = Math.max(currentZoom - 0.25, 0.5);
+            document.getElementById('lightboxImage').style.transform = `scale(${currentZoom})`;
+        }
+
+        // Reset Zoom
+        function resetZoom() {
+            currentZoom = 1;
+            document.getElementById('lightboxImage').style.transform = `scale(1)`;
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', function (e) {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('hidden')) {
+                switch (e.key) {
+                    case 'ArrowLeft':
+                        previousImage();
+                        break;
+                    case 'ArrowRight':
+                        nextImage();
+                        break;
+                    case 'Escape':
+                        closeLightbox();
+                        break;
+                    case '+':
+                    case '=':
+                        zoomIn();
+                        break;
+                    case '-':
+                        zoomOut();
+                        break;
+                    case '0':
+                        resetZoom();
+                        break;
+                }
+            }
+
+            const modal = document.getElementById('galleryModal');
+            if (!modal.classList.contains('hidden') && e.key === 'Escape') {
+                closeGalleryModal();
+            }
+        });
+
+        // Close modals when clicking outside
+        document.getElementById('galleryModal')?.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeGalleryModal();
+            }
+        });
+
+        document.getElementById('lightbox')?.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 
 </html>
-
