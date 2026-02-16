@@ -345,6 +345,238 @@
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
+
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 60;
+            display: none;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        #lightbox.active {
+            display: flex;
+        }
+
+        #lb-topbar {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        #lb-caption {
+            color: #e5e7eb;
+            font-size: .9rem;
+            flex: 1;
+            text-align: center;
+            padding: 0 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #lb-counter {
+            color: #9ca3af;
+            font-size: .8rem;
+            white-space: nowrap;
+        }
+
+        #lb-toolbar {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .lb-tool-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #d1d5db;
+            cursor: pointer;
+            transition: background .15s, color .15s, transform .1s;
+            font-size: .85rem;
+        }
+
+        .lb-tool-btn:hover {
+            background: rgba(99, 102, 241, .3);
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .lb-tool-btn:active {
+            transform: scale(.95);
+        }
+
+        #lb-zoom-level {
+            color: #9ca3af;
+            font-size: .75rem;
+            min-width: 44px;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .lb-separator {
+            width: 1px;
+            height: 24px;
+            background: rgba(255, 255, 255, .15);
+            margin: 0 4px;
+        }
+
+        #lb-image-area {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lb-image-area.grabbing {
+            cursor: grabbing;
+        }
+
+        #lb-image-wrap {
+            position: relative;
+            transform-origin: center center;
+            transition: transform .18s ease;
+            will-change: transform;
+        }
+
+        #lb-image-wrap.no-transition {
+            transition: none;
+        }
+
+        #lb-img {
+            display: block;
+            max-width: none;
+            max-height: none;
+            pointer-events: none;
+        }
+
+        .lb-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .55);
+            border: 1px solid rgba(255, 255, 255, .18);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background .15s, transform .15s;
+            font-size: 1rem;
+        }
+
+        .lb-nav-btn:hover {
+            background: rgba(99, 102, 241, .6);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #lb-prev {
+            left: 12px;
+        }
+
+        #lb-next {
+            right: 12px;
+        }
+
+        #lb-thumbstrip {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, .7);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(99, 102, 241, .5) transparent;
+        }
+
+        #lb-thumbstrip::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        #lb-thumbstrip::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, .5);
+            border-radius: 4px;
+        }
+
+        .lb-thumb {
+            flex-shrink: 0;
+            width: 56px;
+            height: 40px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: .5;
+            border: 2px solid transparent;
+            transition: opacity .15s, border-color .15s, transform .15s;
+        }
+
+        .lb-thumb:hover {
+            opacity: .85;
+            transform: scale(1.06);
+        }
+
+        .lb-thumb.active {
+            opacity: 1;
+            border-color: #6366f1;
+            transform: scale(1.06);
+        }
+
+        .lb-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #lb-close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, .15);
+            border: 1px solid rgba(239, 68, 68, .3);
+            color: #f87171;
+            cursor: pointer;
+            transition: background .15s;
+            font-size: .9rem;
+            flex-shrink: 0;
+        }
+
+        #lb-close:hover {
+            background: rgba(239, 68, 68, .4);
+            color: #fff;
+        }
+
         /* Enhanced Accordion */
         .accordion-enhanced {
             background: var(--bg-glass);
@@ -915,341 +1147,390 @@
 
         <!-- Enhanced Skills Section -->
         <section id="skills" class="py-20 px-4 sm:px-8 scroll-reveal">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-            <h2
-                class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                Core Competencies
-            </h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
-            <p class="text-lg text-gray-600 max-w-4xl mx-auto">
-                My skill set is a balanced mix of technical proficiency and critical soft skills essential for
-                leadership and collaboration.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Technical Skills -->
-            <div class="glass-card p-8 card-3d scroll-reveal">
-                <div class="text-center mb-8">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-code text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800">Technical Skills</h3>
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Core Competencies
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto">
+                        My skill set is a balanced mix of technical proficiency and critical soft skills essential for
+                        leadership and collaboration.
+                    </p>
                 </div>
 
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-cube mr-2 text-indigo-600"></i>SolidWorks
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-drafting-compass mr-2 text-indigo-600"></i>AutoCAD
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-terminal mr-2 text-indigo-600"></i>C Programming
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fab fa-python mr-2 text-indigo-600"></i>Python
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fab fa-html5 mr-2 text-indigo-600"></i>HTML
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fab fa-css3-alt mr-2 text-indigo-600"></i>CSS
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fab fa-js mr-2 text-indigo-600"></i>JavaScript
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-video mr-2 text-indigo-600"></i>Video Editing
-                    </span>
-                </div>
-            </div>
-
-            <!-- Soft Skills -->
-            <div class="glass-card p-8 card-3d scroll-reveal">
-                <div class="text-center mb-8">
-                    <div
-                        class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-users text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-800">Soft Skills</h3>
-                </div>
-
-                <div class="flex flex-wrap gap-3 justify-center">
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-lightbulb mr-2 text-purple-600"></i>Problem Solving
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-brain mr-2 text-purple-600"></i>Critical Thinking
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-user-tie mr-2 text-purple-600"></i>Team Leadership
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-clock mr-2 text-purple-600"></i>Time Management
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-handshake mr-2 text-purple-600"></i>Teamwork
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-comments mr-2 text-purple-600"></i>Communication
-                    </span>
-                    <span class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
-                        <i class="fas fa-chart-line mr-2 text-purple-600"></i>Market Research
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-        <!-- Enhanced Accordion -->
-                <div class="space-y-6">
-                    <!-- Project 1 -->
-                    <div class="accordion-enhanced accordion-item">
-                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-user text-white text-lg"></i>
-                                </div>
-                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
-                                    Adnan's Personal Portfolio
-                                </span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Technical Skills -->
+                    <div class="glass-card p-8 card-3d scroll-reveal">
+                        <div class="text-center mb-8">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-code text-2xl text-white"></i>
                             </div>
-                            <span
-                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
-                                <i class="fas fa-chevron-down"></i>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                            <div class="p-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4 leading-relaxed">
-                                    This personal portfolio showcases my journey, skills, and experiences in a single
-                                    interactive platform.
-                                    Through this project, I learned the fundamentals of HTML, CSS, and JavaScript, and
-                                    also leveraged
-                                    various AI tools to enhance design, layout, and content creation. The portfolio
-                                    highlights my overall
-                                    story—my academic background, projects, achievements, and personal interests—giving
-                                    visitors a clear
-                                    insight into who I am and what I can do. It serves as both a creative and
-                                    professional representation of
-                                    myself.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">HTML</span>
-                                    <span
-                                        class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">CSS</span>
-                                    <span
-                                        class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">JavaScript</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">AI</span>
-                                </div>
-                                <p class="mb-4"><strong>Timeline:</strong> Aug 2025 – Sep 2025</p>
-                                <div class="flex flex-wrap gap-3">
-                                    <a href="https://istiakadnan114.github.io/mdistiak_adnan/"
-                                        class="btn-gradient text-sm">
-                                        <i class="fas fa-external-link-alt mr-2"></i>Portfolio
-                                    </a>
-                                    <a href="https://github.com/IstiakAdnan114/mdistiak_adnan/blob/main/index.html"
-                                        class="bg-gradient-to-r from-red-500 to-yellow-500 text-white btn-gradient text-sm">
-                                        <i class="fab fa-github mr-2"></i>Github
-                                    </a>
-                                </div>
-                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Technical Skills</h3>
                         </div>
-                    </div>
-                    <!-- Project 2 -->
-                    <div class="accordion-enhanced accordion-item">
-                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-microchip text-white text-lg"></i>
-                                </div>
-                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
-                                    Smart Real-Time Pill Dispensing and Packaging System using IoT and Embedded Systems
-                                </span>
-                            </div>
+
+                        <div class="flex flex-wrap gap-3 justify-center">
                             <span
-                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
-                                <i class="fas fa-chevron-down"></i>
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-cube mr-2 text-indigo-600"></i>SolidWorks
                             </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                            <div class="p-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4 leading-relaxed">
-                                    Developed an IoT-based pill dispensing and packaging system using Arduino and ESP32.
-                                    The system features real-time pill counting, weight measurement, and defective
-                                    bottle
-                                    rejection, improving accuracy and efficiency in pharmaceutical packaging.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">IoT</span>
-                                    <span
-                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Arduino</span>
-                                    <span
-                                        class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">ESP32</span>
-                                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Embedded
-                                        Systems</span>
-                                </div>
-                                <p class="mb-4"><strong>Timeline:</strong> Jun 2025 – Jul 2025</p>
-                                <div class="flex flex-wrap gap-3">
-                                    <a href="https://www.researchgate.net/publication/394411020_Smart_Real-time_Monitoring_and_Control_of_Pill_Dispensing_and_Packaging_Process_for_Pharmaceutical_Industries_Using_IoT_and_Embedded_Systems"
-                                        class="btn-gradient text-sm">
-                                        <i class="fas fa-external-link-alt mr-2"></i>Project Overview
-                                    </a>
-                                    <a href="https://youtu.be/k48h_o7BPG4?si=o_r9_2MXHW77Ubsx"
-                                        class="bg-gradient-to-r from-red-500 to-pink-600 text-white btn-gradient text-sm">
-                                        <i class="fab fa-youtube mr-2"></i>Video Demo
-                                    </a>
-                                </div>
-                            </div>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-drafting-compass mr-2 text-indigo-600"></i>AutoCAD
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-terminal mr-2 text-indigo-600"></i>C Programming
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fab fa-python mr-2 text-indigo-600"></i>Python
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fab fa-html5 mr-2 text-indigo-600"></i>HTML
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fab fa-css3-alt mr-2 text-indigo-600"></i>CSS
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fab fa-js mr-2 text-indigo-600"></i>JavaScript
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-indigo-500 hover:text-indigo-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-video mr-2 text-indigo-600"></i>Video Editing
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Project 3 -->
-                    <div class="accordion-enhanced accordion-item">
-                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-utensils text-white text-lg"></i>
-                                </div>
-                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
-                                    Product Design – Slice and Scrape (Multi-Functional Vegetable Cutter)
-                                </span>
+                    <!-- Soft Skills -->
+                    <div class="glass-card p-8 card-3d scroll-reveal">
+                        <div class="text-center mb-8">
+                            <div
+                                class="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-2xl text-white"></i>
                             </div>
-                            <span
-                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
-                                <i class="fas fa-chevron-down"></i>
-                            </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                            <div class="p-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4 leading-relaxed">
-                                    As part of our product design course, we developed <em>Slice and Scrape</em>, a
-                                    multifunctional
-                                    kitchen tool that combines fruit and vegetable slicing with a coconut scraping
-                                    feature.
-                                    Responsibilities included cost analysis, functional decomposition, black-box
-                                    modeling,
-                                    prototype building, and presenting the product through slides and a poster.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Product
-                                        Design</span>
-                                    <span
-                                        class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Prototyping</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Cost
-                                        Analysis</span>
-                                    <span
-                                        class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Functional
-                                        Design</span>
-                                </div>
-                                <p class="mb-4"><strong>Timeline:</strong> Sep 2024 – Jul 2025</p>
-                                <div class="flex flex-wrap gap-3">
-                                    <a href="https://drive.google.com/file/d/14CYHKYSwveabi1GK01duwrjMFtBE_BkS/view?usp=drive_link"
-                                        class="btn-gradient text-sm">
-                                        <i class="fas fa-file-pdf mr-2"></i>Project Poster
-                                    </a>
-                                    <a href="https://drive.google.com/file/d/1HaIXgY6Nj1Ce2tOGczlEilbjDsP1PEmB/view?usp=drive_link"
-                                        class="bg-gradient-to-r from-green-500 to-teal-600 text-white btn-gradient text-sm">
-                                        <i class="fas fa-eye mr-2"></i>Visual Demo
-                                    </a>
-                                </div>
-                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Soft Skills</h3>
                         </div>
-                    </div>
 
-                    <!-- Project 4 -->
-                    <div class="accordion-enhanced accordion-item">
-                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-car text-white text-lg"></i>
-                                </div>
-                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
-                                    SolidWorks Design – RASTAR LaFerrari Remote Control Car (1:14 Scale)
-                                </span>
-                            </div>
+                        <div class="flex flex-wrap gap-3 justify-center">
                             <span
-                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
-                                <i class="fas fa-chevron-down"></i>
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-lightbulb mr-2 text-purple-600"></i>Problem Solving
                             </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                            <div class="p-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4 leading-relaxed">
-                                    Designed a 1:14 scale model of a Rastar LaFerrari remote control car in SolidWorks.
-                                    Applied advanced 3D surfacing tools and part modeling techniques to capture
-                                    complex curves and details, improving CAD design proficiency.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">SolidWorks</span>
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">3D
-                                        Modeling</span>
-                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">CAD
-                                        Design</span>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Surface
-                                        Modeling</span>
-                                </div>
-                                <p class="mb-4"><strong>Timeline:</strong> Jan 2023 – Feb 2023</p>
-                                <div class="flex flex-wrap gap-3">
-                                    <a href="https://grabcad.com/library/laferrari-rastar-1"
-                                        class="btn-gradient text-sm">
-                                        <i class="fas fa-download mr-2"></i>CAD Files
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 5 -->
-                    <div class="accordion-enhanced accordion-item">
-                        <button class="accordion-button flex justify-between items-center w-full p-6 text-left group">
-                            <div class="flex items-center">
-                                <div
-                                    class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                    <i class="fas fa-home text-white text-lg"></i>
-                                </div>
-                                <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
-                                    AutoCAD Design – Residential Floor Layout
-                                </span>
-                            </div>
                             <span
-                                class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
-                                <i class="fas fa-chevron-down"></i>
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-brain mr-2 text-purple-600"></i>Critical Thinking
                             </span>
-                        </button>
-                        <div class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
-                            <div class="p-6 border-t border-gray-200">
-                                <p class="text-gray-700 mb-4 leading-relaxed">
-                                    Designed a detailed residential house floor plan as part of the Engineering Graphics
-                                    Sessional course. Applied AutoCAD for technical drawing and space optimization,
-                                    gaining practical design experience.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">AutoCAD</span>
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Technical
-                                        Drawing</span>
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Space
-                                        Planning</span>
-                                    <span
-                                        class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Architecture</span>
-                                </div>
-                                <p class="mb-4"><strong>Project Type:</strong> Academic Project</p>
-                            </div>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-user-tie mr-2 text-purple-600"></i>Team Leadership
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-clock mr-2 text-purple-600"></i>Time Management
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-handshake mr-2 text-purple-600"></i>Teamwork
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-comments mr-2 text-purple-600"></i>Communication
+                            </span>
+                            <span
+                                class="skill-badge bg-white border-2 border-gray-300 text-gray-700 px-5 py-3 rounded-lg font-medium shadow-sm hover:border-purple-500 hover:text-purple-600 hover:shadow-md transition-all duration-300 cursor-pointer">
+                                <i class="fas fa-chart-line mr-2 text-purple-600"></i>Market Research
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Enhanced Accordion -->
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 sm:px-8 bg-gray-50 scroll-reveal">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2
+                        class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                        Projects</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-8"></div>
+                </div>
+                <div class="space-y-6">
+                    <!-- all your existing accordion-item divs go here unchanged -->
+                    <div class="space-y-6">
+                        <!-- Project 1 -->
+                        <div class="accordion-enhanced accordion-item">
+                            <button
+                                class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-user text-white text-lg"></i>
+                                    </div>
+                                    <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                        Adnan's Personal Portfolio
+                                    </span>
+                                </div>
+                                <span
+                                    class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                            <div
+                                class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        This personal portfolio showcases my journey, skills, and experiences in a
+                                        single
+                                        interactive platform.
+                                        Through this project, I learned the fundamentals of HTML, CSS, and JavaScript,
+                                        and
+                                        also leveraged
+                                        various AI tools to enhance design, layout, and content creation. The portfolio
+                                        highlights my overall
+                                        story—my academic background, projects, achievements, and personal
+                                        interests—giving
+                                        visitors a clear
+                                        insight into who I am and what I can do. It serves as both a creative and
+                                        professional representation of
+                                        myself.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">HTML</span>
+                                        <span
+                                            class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">CSS</span>
+                                        <span
+                                            class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">JavaScript</span>
+                                        <span
+                                            class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">AI</span>
+                                    </div>
+                                    <p class="mb-4"><strong>Timeline:</strong> Aug 2025 – Sep 2025</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <a href="https://istiakadnan114.github.io/mdistiak_adnan/"
+                                            class="btn-gradient text-sm">
+                                            <i class="fas fa-external-link-alt mr-2"></i>Portfolio
+                                        </a>
+                                        <a href="https://github.com/IstiakAdnan114/mdistiak_adnan/blob/main/index.html"
+                                            class="bg-gradient-to-r from-red-500 to-yellow-500 text-white btn-gradient text-sm">
+                                            <i class="fab fa-github mr-2"></i>Github
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project 2 -->
+                        <div class="accordion-enhanced accordion-item">
+                            <button
+                                class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-microchip text-white text-lg"></i>
+                                    </div>
+                                    <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                        Smart Real-Time Pill Dispensing and Packaging System using IoT and Embedded
+                                        Systems
+                                    </span>
+                                </div>
+                                <span
+                                    class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                            <div
+                                class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        Developed an IoT-based pill dispensing and packaging system using Arduino and
+                                        ESP32.
+                                        The system features real-time pill counting, weight measurement, and defective
+                                        bottle
+                                        rejection, improving accuracy and efficiency in pharmaceutical packaging.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span
+                                            class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">IoT</span>
+                                        <span
+                                            class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Arduino</span>
+                                        <span
+                                            class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">ESP32</span>
+                                        <span
+                                            class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Embedded
+                                            Systems</span>
+                                    </div>
+                                    <p class="mb-4"><strong>Timeline:</strong> Jun 2025 – Jul 2025</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <a href="https://www.researchgate.net/publication/394411020_Smart_Real-time_Monitoring_and_Control_of_Pill_Dispensing_and_Packaging_Process_for_Pharmaceutical_Industries_Using_IoT_and_Embedded_Systems"
+                                            class="btn-gradient text-sm">
+                                            <i class="fas fa-external-link-alt mr-2"></i>Project Overview
+                                        </a>
+                                        <a href="https://youtu.be/k48h_o7BPG4?si=o_r9_2MXHW77Ubsx"
+                                            class="bg-gradient-to-r from-red-500 to-pink-600 text-white btn-gradient text-sm">
+                                            <i class="fab fa-youtube mr-2"></i>Video Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="accordion-enhanced accordion-item">
+                            <button
+                                class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-utensils text-white text-lg"></i>
+                                    </div>
+                                    <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                        Product Design – Slice and Scrape (Multi-Functional Vegetable Cutter)
+                                    </span>
+                                </div>
+                                <span
+                                    class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                            <div
+                                class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        As part of our product design course, we developed <em>Slice and Scrape</em>, a
+                                        multifunctional
+                                        kitchen tool that combines fruit and vegetable slicing with a coconut scraping
+                                        feature.
+                                        Responsibilities included cost analysis, functional decomposition, black-box
+                                        modeling,
+                                        prototype building, and presenting the product through slides and a poster.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Product
+                                            Design</span>
+                                        <span
+                                            class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Prototyping</span>
+                                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Cost
+                                            Analysis</span>
+                                        <span
+                                            class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm">Functional
+                                            Design</span>
+                                    </div>
+                                    <p class="mb-4"><strong>Timeline:</strong> Sep 2024 – Jul 2025</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <a href="https://drive.google.com/file/d/14CYHKYSwveabi1GK01duwrjMFtBE_BkS/view?usp=drive_link"
+                                            class="btn-gradient text-sm">
+                                            <i class="fas fa-file-pdf mr-2"></i>Project Poster
+                                        </a>
+                                        <a href="https://drive.google.com/file/d/1HaIXgY6Nj1Ce2tOGczlEilbjDsP1PEmB/view?usp=drive_link"
+                                            class="bg-gradient-to-r from-green-500 to-teal-600 text-white btn-gradient text-sm">
+                                            <i class="fas fa-eye mr-2"></i>Visual Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="accordion-enhanced accordion-item">
+                            <button
+                                class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-car text-white text-lg"></i>
+                                    </div>
+                                    <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                        SolidWorks Design – RASTAR LaFerrari Remote Control Car (1:14 Scale)
+                                    </span>
+                                </div>
+                                <span
+                                    class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                            <div
+                                class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        Designed a 1:14 scale model of a Rastar LaFerrari remote control car in
+                                        SolidWorks.
+                                        Applied advanced 3D surfacing tools and part modeling techniques to capture
+                                        complex curves and details, improving CAD design proficiency.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span
+                                            class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">SolidWorks</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">3D
+                                            Modeling</span>
+                                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">CAD
+                                            Design</span>
+                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Surface
+                                            Modeling</span>
+                                    </div>
+                                    <p class="mb-4"><strong>Timeline:</strong> Jan 2023 – Feb 2023</p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <a href="https://grabcad.com/library/laferrari-rastar-1"
+                                            class="btn-gradient text-sm">
+                                            <i class="fas fa-download mr-2"></i>CAD Files
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 5 -->
+                        <div class="accordion-enhanced accordion-item">
+                            <button
+                                class="accordion-button flex justify-between items-center w-full p-6 text-left group">
+                                <div class="flex items-center">
+                                    <div
+                                        class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                        <i class="fas fa-home text-white text-lg"></i>
+                                    </div>
+                                    <span class="text-xl font-semibold group-hover:text-indigo-600 transition-colors">
+                                        AutoCAD Design – Residential Floor Layout
+                                    </span>
+                                </div>
+                                <span
+                                    class="accordion-arrow text-2xl text-gray-400 transform transition-transform duration-300">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </button>
+                            <div
+                                class="accordion-content overflow-hidden max-h-0 transition-all duration-500 ease-in-out">
+                                <div class="p-6 border-t border-gray-200">
+                                    <p class="text-gray-700 mb-4 leading-relaxed">
+                                        Designed a detailed residential house floor plan as part of the Engineering
+                                        Graphics
+                                        Sessional course. Applied AutoCAD for technical drawing and space optimization,
+                                        gaining practical design experience.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span
+                                            class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">AutoCAD</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Technical
+                                            Drawing</span>
+                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Space
+                                            Planning</span>
+                                        <span
+                                            class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Architecture</span>
+                                    </div>
+                                    <p class="mb-4"><strong>Project Type:</strong> Academic Project</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
         <!-- Enhanced Research Section -->
         <section id="research" class="py-20 px-4 sm:px-8 scroll-reveal">
             <div class="max-w-6xl mx-auto">
@@ -1469,7 +1750,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
         </section>
 
         <!-- Gallery Category Modal -->
@@ -1498,69 +1779,40 @@
         </div>
 
         <!-- Lightbox -->
-        <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-98 z-[60] hidden">
-            <div class="w-full h-full flex items-center justify-center">
-                <button onclick="closeLightbox()"
-                    class="fixed top-4 right-4 z-[70] text-white hover:text-gray-300 transition-colors">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-
-                <button onclick="previousImage()"
-                    class="fixed left-4 top-1/2 -translate-y-1/2 z-[70] text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-
-                <button onclick="nextImage()"
-                    class="fixed right-4 top-1/2 -translate-y-1/2 z-[70] text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-
-                <div class="relative w-full h-full flex items-center justify-center p-4">
-                    <div id="imageContainer" class="relative">
-                        <img id="lightboxImage" src="" alt=""
-                            class="max-w-full max-h-[85vh] object-contain transition-transform duration-300">
-                    </div>
-
-                    <div
-                        class="fixed top-6 left-1/2 -translate-x-1/2 z-[70] bg-black bg-opacity-70 px-4 py-2 rounded-full">
-                        <span id="imageCounter" class="text-white text-sm"></span>
-                    </div>
-
-                    <div
-                        class="fixed bottom-24 left-1/2 -translate-x-1/2 z-[70] bg-black bg-opacity-70 px-6 py-3 rounded-full max-w-2xl">
-                        <p id="imageCaption" class="text-white text-center"></p>
-                    </div>
-                </div>
-
-                <div
-                    class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[70] flex gap-3 bg-black bg-opacity-70 px-6 py-3 rounded-full">
-                    <button onclick="zoomOut()" class="text-white hover:text-gray-300" title="Zoom Out">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
-                        </svg>
-                    </button>
-                    <button onclick="resetZoom()" class="text-white hover:text-gray-300" title="Reset">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    </button>
-                    <button onclick="zoomIn()" class="text-white hover:text-gray-300" title="Zoom In">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                        </svg>
-                    </button>
-                </div>
+        <div id="lightbox">
+            <div id="lb-topbar">
+                <span id="lb-counter">1 / 1</span>
+                <span id="lb-caption"></span>
+                <button id="lb-close" onclick="closeLightbox()" title="Close (Esc)"><i
+                        class="fas fa-times"></i></button>
             </div>
+            <div id="lb-toolbar">
+                <button class="lb-tool-btn" onclick="lbZoom(-0.25)" title="Zoom Out (-)"><i
+                        class="fas fa-search-minus"></i></button>
+                <button class="lb-tool-btn" onclick="lbZoomTo(1)" title="Actual Size (0)"><span
+                        style="font-size:.7rem;font-weight:700">1:1</span></button>
+                <button class="lb-tool-btn" onclick="lbFitToWindow()" title="Fit (F)"><i
+                        class="fas fa-expand-arrows-alt"></i></button>
+                <button class="lb-tool-btn" onclick="lbZoom(0.25)" title="Zoom In (+)"><i
+                        class="fas fa-search-plus"></i></button>
+                <span id="lb-zoom-level">100%</span>
+                <div class="lb-separator"></div>
+                <button class="lb-tool-btn" onclick="lbRotate(-90)" title="Rotate Left"><i
+                        class="fas fa-undo"></i></button>
+                <button class="lb-tool-btn" onclick="lbRotate(90)" title="Rotate Right"><i
+                        class="fas fa-redo"></i></button>
+                <div class="lb-separator"></div>
+                <button class="lb-tool-btn" onclick="lbPrev()" title="Prev (←)"><i
+                        class="fas fa-chevron-left"></i></button>
+                <button class="lb-tool-btn" onclick="lbNext()" title="Next (→)"><i
+                        class="fas fa-chevron-right"></i></button>
+            </div>
+            <div id="lb-image-area">
+                <div id="lb-image-wrap"><img id="lb-img" src="" alt=""></div>
+                <button class="lb-nav-btn" id="lb-prev" onclick="lbPrev()"><i class="fas fa-chevron-left"></i></button>
+                <button class="lb-nav-btn" id="lb-next" onclick="lbNext()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div id="lb-thumbstrip"></div>
         </div>
 
         <!-- Enhanced Achievements Section -->
@@ -1593,8 +1845,8 @@
                                 <p class="text-gray-600 mb-1">Photo Title: <em>"A solitary figure gazing forward,
                                         leading the way for change"</em></p>
                                 <p class="text-sm text-gray-500">
-                                    <a href="https://drive.google.com/drive/folders/1D3BnfLnOR1ghajqmxRIOHlKALJjZw7VZ?usp=sharing" target="_blank"
-                                        class="text-blue-600 hover:underline">
+                                    <a href="https://drive.google.com/drive/folders/1D3BnfLnOR1ghajqmxRIOHlKALJjZw7VZ?usp=sharing"
+                                        target="_blank" class="text-blue-600 hover:underline">
                                         View My Works and Achievements
                                     </a>
                                 </p>
@@ -2193,231 +2445,145 @@
     <script>
         // Photo Gallery Data
         const galleryData = {
-            iot: {
-                title: "IoT Projects",
-                subtitle: "Smart Systems and Connected Devices",
-                images: [
-                    { src: "images/IoT-project.jpeg", alt: "Smart Pill Dispensing System", caption: "IoT-based Smart Real-Time Pill Dispensing System" },
-                    { src: "images/iot-2.jpeg", alt: "IoT Dashboard", caption: "Real-time monitoring dashboard" },
-                    { src: "images/iot-3.jpeg", alt: "Sensor Integration", caption: "Sensor network and data collection" },
-                ]
-            },
-            design: {
-                title: "3D Design Projects",
-                subtitle: "CAD Modeling and Product Visualization",
-                images: [
-                    { src: "images/laferrari_rc.jpeg", alt: "LaFerrari RC Model", caption: "LaFerrari RC - SolidWorks 3D Model" },
-                    { src: "images/design-2.jpeg", alt: "CAD Design", caption: "Detailed CAD modeling" },
-                    { src: "images/design-3.jpeg", alt: "Product Rendering", caption: "High-quality product rendering" },
-                ]
-            },
-            industrial: {
-                title: "Industrial Visits",
-                subtitle: "Learning from Manufacturing Excellence",
-                images: [
-                    { src: "images/Me_at_pran-rfl.jpg", alt: "PRAN-RFL Visit", caption: "PRAN-RFL Industrial Park Experience" },
-                    { src: "images/industrial-2.jpg", alt: "Factory Tour", caption: "Manufacturing floor visit" },
-                    { src: "images/industrial-3.jpg", alt: "Production Line", caption: "Automated production systems" },
-                ]
-            },
-            photography: {
-                title: "Photography",
-                subtitle: "Capturing Moments and Perspectives",
-                images: [
-                    { src: "images/riding horse.jpeg", alt: "Horse Riding", caption: "Personal Photography - Horse Riding" },
-                    { src: "images/photo-2.jpeg", alt: "Nature Photography", caption: "Nature and landscape shots" },
-                    { src: "images/photo-3.jpeg", alt: "Urban Scenes", caption: "City life and architecture" },
-                ]
-            },
-            travel: {
-                title: "Travel Adventures",
-                subtitle: "Exploring Bangladesh and Beyond",
-                images: [
-                    { src: "images/me at cox bazar.jpg", alt: "Cox's Bazar", caption: "Cox's Bazar - World's Longest Beach" },
-                    { src: "images/travel-2.jpg", alt: "Mountain View", caption: "Mountain hiking adventure" },
-                    { src: "images/travel-3.jpg", alt: "City Exploration", caption: "Exploring new cities" },
-                ]
-            },
-            product: {
-                title: "Product Design",
-                subtitle: "Innovative Solutions and Prototypes",
-                images: [
-                    { src: "images/slice and scrape.jpeg", alt: "Slice and Scrape", caption: "Slice and Scrape - Kitchen Innovation" },
-                    { src: "images/product-2.jpeg", alt: "Product Prototype", caption: "Product prototype development" },
-                    { src: "images/product-3.jpeg", alt: "Design Iteration", caption: "Design refinement process" },
-                ]
-            },
-            volunteering: {
-                title: "Volunteering",
-                subtitle: "Community Service and Social Impact",
-                images: [
-                    { src: "images/buet_badhan.jpeg", alt: "Team Badhan", caption: "Team Badhan - Blood Donation Community" },
-                    { src: "images/volunteer-2.jpeg", alt: "Community Event", caption: "Community service activities" },
-                    { src: "images/volunteer-3.jpeg", alt: "Blood Donation", caption: "Blood donation drive" },
-                ]
-            }
+            iot: { title: 'IoT Projects', subtitle: 'Smart Systems and Connected Devices', images: [{ src: 'images/IoT-project.jpeg', alt: 'Smart Pill Dispensing System', caption: 'IoT-based Smart Real-Time Pill Dispensing System' }, { src: 'images/iot-2.jpeg', alt: 'IoT Dashboard', caption: 'Real-time monitoring dashboard' }, { src: 'images/iot-3.jpeg', alt: 'Sensor Integration', caption: 'Sensor network and data collection' }] },
+            design: { title: '3D Design Projects', subtitle: 'CAD Modeling and Product Visualization', images: [{ src: 'images/laferrari_rc.jpeg', alt: 'LaFerrari RC Model', caption: 'LaFerrari RC – SolidWorks 3D Model' }, { src: 'images/design-2.jpeg', alt: 'CAD Design', caption: 'Detailed CAD modeling' }, { src: 'images/design-3.jpeg', alt: 'Product Rendering', caption: 'High-quality product rendering' }] },
+            industrial: { title: 'Industrial Visits', subtitle: 'Learning from Manufacturing Excellence', images: [{ src: 'images/Me_at_pran-rfl.jpg', alt: 'PRAN-RFL Visit', caption: 'PRAN-RFL Industrial Park Experience' }, { src: 'images/industrial-2.jpg', alt: 'Factory Tour', caption: 'Manufacturing floor visit' }, { src: 'images/industrial-3.jpg', alt: 'Production Line', caption: 'Automated production systems' }] },
+            photography: { title: 'Photography', subtitle: 'Capturing Moments and Perspectives', images: [{ src: 'images/riding horse.jpeg', alt: 'Horse Riding', caption: 'Personal Photography – Horse Riding' }, { src: 'images/photo-2.jpeg', alt: 'Nature Photography', caption: 'Nature and landscape shots' }, { src: 'images/photo-3.jpeg', alt: 'Urban Scenes', caption: 'City life and architecture' }] },
+            travel: { title: 'Travel Adventures', subtitle: 'Exploring Bangladesh and Beyond', images: [{ src: 'images/me at cox bazar.jpg', alt: "Cox's Bazar", caption: "Cox's Bazar – World's Longest Beach" }, { src: 'images/travel-2.jpg', alt: 'Mountain View', caption: 'Mountain hiking adventure' }, { src: 'images/travel-3.jpg', alt: 'City Exploration', caption: 'Exploring new cities' }] },
+            product: { title: 'Product Design', subtitle: 'Innovative Solutions and Prototypes', images: [{ src: 'images/slice and scrape.jpeg', alt: 'Slice and Scrape', caption: 'Slice and Scrape – Kitchen Innovation' }, { src: 'images/product-2.jpeg', alt: 'Product Prototype', caption: 'Product prototype development' }, { src: 'images/product-3.jpeg', alt: 'Design Iteration', caption: 'Design refinement process' }] },
+            volunteering: { title: 'Volunteering', subtitle: 'Community Service and Social Impact', images: [{ src: 'images/buet_badhan.jpeg', alt: 'Team Badhan', caption: 'Team Badhan – Blood Donation Community' }, { src: 'images/volunteer-2.jpeg', alt: 'Community Event', caption: 'Community service activities' }, { src: 'images/volunteer-3.jpeg', alt: 'Blood Donation', caption: 'Blood donation drive' }] }
         };
 
-        let currentCategory = '';
-        let currentImageIndex = 0;
-        let currentZoom = 1;
-        let currentImages = [];
-
-        // Open Gallery Modal
+        // Gallery modal
         function openGalleryModal(category) {
-            currentCategory = category;
-            const data = galleryData[category];
-
-            if (!data) return;
-
+            const data = galleryData[category]; if (!data) return;
             document.getElementById('modalTitle').textContent = data.title;
             document.getElementById('modalSubtitle').textContent = data.subtitle;
-
-            const grid = document.getElementById('modalImageGrid');
-            grid.innerHTML = '';
-
-            data.images.forEach((image, index) => {
-                const imageCard = document.createElement('div');
-                imageCard.className = 'glass-card rounded-xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl';
-                imageCard.onclick = () => openLightbox(category, index);
-
-                imageCard.innerHTML = `
-            <img src="${image.src}" alt="${image.alt}" class="w-full h-48 object-cover">
-            <div class="p-3 bg-white bg-opacity-10">
-                <p class="text-white text-sm text-center">${image.caption}</p>
-            </div>
-        `;
-
-                grid.appendChild(imageCard);
+            const grid = document.getElementById('modalImageGrid'); grid.innerHTML = '';
+            data.images.forEach((img, idx) => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl';
+                card.onclick = () => openLightbox(category, idx);
+                card.innerHTML = `<img src="${img.src}" alt="${img.alt}" class="w-full h-48 object-cover"><div class="p-3 bg-white bg-opacity-10"><p class="text-white text-sm text-center">${img.caption}</p></div>`;
+                grid.appendChild(card);
             });
-
             document.getElementById('galleryModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
-
-        // Close Gallery Modal
         function closeGalleryModal() {
             document.getElementById('galleryModal').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+        document.getElementById('galleryModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeGalleryModal(); });
 
-        // Open Lightbox
+        // Lightbox state
+        const lb = { category: '', index: 0, images: [], zoom: 1, rotation: 0, panX: 0, panY: 0, dragging: false, lastMX: 0, lastMY: 0, fitScale: 1 };
+        const lbEl = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lb-img');
+        const lbWrap = document.getElementById('lb-image-wrap');
+        const lbArea = document.getElementById('lb-image-area');
+        const lbThumbStrip = document.getElementById('lb-thumbstrip');
+
         function openLightbox(category, index) {
-            currentCategory = category;
-            currentImageIndex = index;
-            currentImages = galleryData[category].images;
-            currentZoom = 1;
+            lb.category = category; lb.images = galleryData[category].images; lb.index = index;
+            lb.zoom = 1; lb.rotation = 0; lb.panX = 0; lb.panY = 0;
+            lbEl.classList.add('active'); document.body.style.overflow = 'hidden';
+            buildThumbs(); lbLoadImage();
+        }
+        function closeLightbox() { lbEl.classList.remove('active'); document.body.style.overflow = 'auto'; }
 
-            updateLightboxImage();
-            document.getElementById('lightbox').classList.remove('hidden');
-            document.getElementById('lightbox').classList.add('flex');
+        function lbLoadImage() {
+            const img = lb.images[lb.index];
+            lbImg.src = img.src; lbImg.alt = img.alt;
+            document.getElementById('lb-caption').textContent = img.caption;
+            document.getElementById('lb-counter').textContent = `${lb.index + 1} / ${lb.images.length}`;
+            lb.zoom = 1; lb.rotation = 0; lb.panX = 0; lb.panY = 0;
+            lbImg.onload = lbFitToWindow;
+            if (lbImg.complete) lbFitToWindow();
+            updateThumbs();
+        }
+        function lbApply(anim) {
+            lbWrap.classList.toggle('no-transition', !anim);
+            lbWrap.style.transform = `translate(${lb.panX}px,${lb.panY}px) rotate(${lb.rotation}deg) scale(${lb.zoom})`;
+            document.getElementById('lb-zoom-level').textContent = Math.round(lb.zoom * 100) + '%';
+        }
+        function lbFitToWindow() {
+            const W = lbArea.clientWidth - 100, H = lbArea.clientHeight - 20;
+            const iW = lbImg.naturalWidth || 800, iH = lbImg.naturalHeight || 600;
+            lb.fitScale = Math.min(W / iW, H / iH, 1);
+            lbImg.style.width = iW + 'px'; lbImg.style.height = iH + 'px';
+            lb.zoom = lb.fitScale; lb.panX = 0; lb.panY = 0; lbApply(false);
+        }
+        function lbZoom(d) { lb.zoom = Math.min(Math.max(lb.zoom + d, 0.1), 8); lbApply(true); }
+        function lbZoomTo(z) { lb.zoom = z; lb.panX = 0; lb.panY = 0; lbApply(true); }
+        function lbRotate(d) { lb.rotation = (lb.rotation + d + 360) % 360; lbApply(true); }
+        function lbPrev() { lb.index = (lb.index - 1 + lb.images.length) % lb.images.length; lbLoadImage(); }
+        function lbNext() { lb.index = (lb.index + 1) % lb.images.length; lbLoadImage(); }
+
+        function buildThumbs() {
+            lbThumbStrip.innerHTML = '';
+            lb.images.forEach((img, i) => {
+                const d = document.createElement('div');
+                d.className = 'lb-thumb' + (i === lb.index ? ' active' : ''); d.dataset.i = i;
+                d.innerHTML = `<img src="${img.src}" alt="">`;
+                d.onclick = () => { lb.index = i; lbLoadImage(); };
+                lbThumbStrip.appendChild(d);
+            });
+        }
+        function updateThumbs() {
+            lbThumbStrip.querySelectorAll('.lb-thumb').forEach((t, i) => t.classList.toggle('active', i === lb.index));
+            const a = lbThumbStrip.querySelector('.lb-thumb.active');
+            if (a) a.scrollIntoView({ inline: 'center', behavior: 'smooth' });
         }
 
-        // Close Lightbox
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.add('hidden');
-            document.getElementById('lightbox').classList.remove('flex');
-            resetZoom();
-        }
+        // Wheel zoom (cursor-centred)
+        lbArea.addEventListener('wheel', e => {
+            e.preventDefault();
+            const d = e.deltaY < 0 ? 0.15 : -0.15;
+            const r = lbArea.getBoundingClientRect();
+            const cx = e.clientX - r.left - r.width / 2, cy = e.clientY - r.top - r.height / 2;
+            const prev = lb.zoom; lb.zoom = Math.min(Math.max(lb.zoom + d, 0.1), 8);
+            const ratio = lb.zoom / prev;
+            lb.panX = cx + (lb.panX - cx) * ratio; lb.panY = cy + (lb.panY - cy) * ratio;
+            lbApply(false);
+        }, { passive: false });
 
-        // Update Lightbox Image
-        function updateLightboxImage() {
-            const image = currentImages[currentImageIndex];
-            const lightboxImg = document.getElementById('lightboxImage');
-
-            lightboxImg.src = image.src;
-            lightboxImg.alt = image.alt;
-
-            document.getElementById('imageCounter').textContent =
-                `${currentImageIndex + 1} / ${currentImages.length}`;
-            document.getElementById('imageCaption').textContent = image.caption;
-
-            lightboxImg.style.transform = `scale(${currentZoom})`;
-        }
-
-        // Previous Image
-        function previousImage() {
-            currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
-            resetZoom();
-            updateLightboxImage();
-        }
-
-        // Next Image
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % currentImages.length;
-            resetZoom();
-            updateLightboxImage();
-        }
-
-        // Zoom In
-        function zoomIn() {
-            currentZoom = Math.min(currentZoom + 0.25, 3);
-            document.getElementById('lightboxImage').style.transform = `scale(${currentZoom})`;
-        }
-
-        // Zoom Out
-        function zoomOut() {
-            currentZoom = Math.max(currentZoom - 0.25, 0.5);
-            document.getElementById('lightboxImage').style.transform = `scale(${currentZoom})`;
-        }
-
-        // Reset Zoom
-        function resetZoom() {
-            currentZoom = 1;
-            document.getElementById('lightboxImage').style.transform = `scale(1)`;
-        }
-
-        // Keyboard Navigation
-        document.addEventListener('keydown', function (e) {
-            const lightbox = document.getElementById('lightbox');
-            if (!lightbox.classList.contains('hidden')) {
-                switch (e.key) {
-                    case 'ArrowLeft':
-                        previousImage();
-                        break;
-                    case 'ArrowRight':
-                        nextImage();
-                        break;
-                    case 'Escape':
-                        closeLightbox();
-                        break;
-                    case '+':
-                    case '=':
-                        zoomIn();
-                        break;
-                    case '-':
-                        zoomOut();
-                        break;
-                    case '0':
-                        resetZoom();
-                        break;
-                }
-            }
-
-            const modal = document.getElementById('galleryModal');
-            if (!modal.classList.contains('hidden') && e.key === 'Escape') {
-                closeGalleryModal();
-            }
+        // Double-click zoom toggle
+        lbArea.addEventListener('dblclick', e => {
+            if (lb.zoom < lb.fitScale * 1.5) {
+                const r = lbArea.getBoundingClientRect(), cx = e.clientX - r.left - r.width / 2, cy = e.clientY - r.top - r.height / 2;
+                const tz = lb.fitScale * 2, ratio = tz / lb.zoom;
+                lb.panX = cx + (lb.panX - cx) * ratio; lb.panY = cy + (lb.panY - cy) * ratio; lb.zoom = tz;
+            } else { lb.panX = 0; lb.panY = 0; lb.zoom = lb.fitScale; }
+            lbApply(true);
         });
 
-        // Close modals when clicking outside
-        document.getElementById('galleryModal')?.addEventListener('click', function (e) {
-            if (e.target === this) {
-                closeGalleryModal();
-            }
-        });
+        // Pan (drag)
+        lbArea.addEventListener('mousedown', e => { if (e.button !== 0) return; lb.dragging = true; lb.lastMX = e.clientX; lb.lastMY = e.clientY; lbArea.classList.add('grabbing'); });
+        window.addEventListener('mousemove', e => { if (!lb.dragging) return; lb.panX += e.clientX - lb.lastMX; lb.panY += e.clientY - lb.lastMY; lb.lastMX = e.clientX; lb.lastMY = e.clientY; lbApply(false); });
+        window.addEventListener('mouseup', () => { lb.dragging = false; lbArea.classList.remove('grabbing'); });
 
-        document.getElementById('lightbox')?.addEventListener('click', function (e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
+        // Pinch zoom (touch)
+        let lbT = [], lbPD = 0;
+        lbArea.addEventListener('touchstart', e => { lbT = Array.from(e.touches); if (lbT.length === 2) lbPD = Math.hypot(lbT[0].clientX - lbT[1].clientX, lbT[0].clientY - lbT[1].clientY); }, { passive: true });
+        lbArea.addEventListener('touchmove', e => {
+            e.preventDefault();
+            const t = Array.from(e.touches);
+            if (t.length === 1 && lbT.length === 1) { lb.panX += t[0].clientX - lbT[0].clientX; lb.panY += t[0].clientY - lbT[0].clientY; }
+            else if (t.length === 2) { const d = Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY); if (lbPD) lb.zoom = Math.min(Math.max(lb.zoom * (d / lbPD), 0.1), 8); lbPD = d; }
+            lbT = t; lbApply(false);
+        }, { passive: false });
+
+        // Keyboard
+        document.addEventListener('keydown', e => {
+            if (!lbEl.classList.contains('active')) { if (!document.getElementById('galleryModal').classList.contains('hidden') && e.key === 'Escape') closeGalleryModal(); return; }
+            ({ ArrowLeft: lbPrev, ArrowRight: lbNext, Escape: closeLightbox })[e.key]?.();
+            if (e.key === '+' || e.key === '=') lbZoom(0.25);
+            if (e.key === '-') lbZoom(-0.25);
+            if (e.key === '0') lbZoomTo(1);
+            if (e.key === 'f' || e.key === 'F') lbFitToWindow();
         });
     </script>
 </body>
 
 </html>
-
-
-
-
-
